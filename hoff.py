@@ -46,3 +46,11 @@ byte_frequencies_list = list(byte_frequencies.items())
 huffman_codes_list = list(huffman_codes.items())
 
 print(byte_frequencies_list[:10], huffman_codes_list[:10], sep='\n')
+
+original_size_bits = len(data) * 8
+
+compressed_size_bits = sum(byte_frequencies[byte] * len(huffman_codes[byte]) for byte in byte_frequencies)
+
+compression_ratio = compressed_size_bits / original_size_bits
+
+print(original_size_bits, compressed_size_bits, compression_ratio)
